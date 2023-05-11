@@ -62,7 +62,7 @@
       </div><!-- input-group -->
      
       <div class="sl-sideleft-menu">
-        <a href="{{ url('admin/home') }}" class="sl-menu-link active">
+        <a href="{{ url('admin/home') }}" class="sl-menu-link @yield('dashboard')">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
@@ -74,31 +74,30 @@
             <span class="menu-item-label">Visit Site</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="{{ route('admin.category') }}" target="_blank" class="sl-menu-link ">
+        <a href="{{ route('admin.category') }}" class="sl-menu-link @yield('category')">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Category</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="widgets.html" class="sl-menu-link">
+        <a href="{{ route('admin.brand') }}" class="sl-menu-link @yield('brand')">
           <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-            <span class="menu-item-label">Cards &amp; Widgets</span>
+            <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+            <span class="menu-item-label">Brand</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="#" class="sl-menu-link">
+        
+        <a href="#" class="sl-menu-link @yield('products')">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-            <span class="menu-item-label">Charts</span>
+            <span class="menu-item-label">Products</span>
             <i class="menu-item-arrow fa fa-angle-down"></i>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="chart-morris.html" class="nav-link">Morris Charts</a></li>
-          <li class="nav-item"><a href="chart-flot.html" class="nav-link">Flot Charts</a></li>
-          <li class="nav-item"><a href="chart-chartjs.html" class="nav-link">Chart JS</a></li>
-          <li class="nav-item"><a href="chart-rickshaw.html" class="nav-link">Rickshaw</a></li>
-          <li class="nav-item"><a href="chart-sparkline.html" class="nav-link">Sparkline</a></li>
+          <li class="nav-item"><a href="{{ route('add-products') }}" class="nav-link @yield('add-products')">Add Products</a></li>
+          <li class="nav-item"><a href="chart-flot.html" class="nav-link">Manage Products</a></li>
+        
         </ul>
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -414,16 +413,12 @@
     <script src="{{ asset('backend') }}/lib/Flot/jquery.flot.pie.js"></script>
     <script src="{{ asset('backend') }}/lib/Flot/jquery.flot.resize.js"></script>
     <script src="{{ asset('backend') }}/lib/flot-spline/jquery.flot.spline.js"></script>
-
     <script src="{{ asset('backend') }}/js/starlight.js"></script>
     <script src="{{ asset('backend') }}/js/ResizeSensor.js"></script>
     <script src="{{ asset('backend') }}/js/dashboard.js"></script>
-    <script src="{{ asset('backend') }}/lib/highlightjs/highlight.pack.js"></script>
-    
+    <script src="{{ asset('backend') }}/lib/highlightjs/highlight.pack.js"></script>    
     <script src="{{ asset('backend') }}/lib/select2/js/select2.min.js"></script>
-
     <script src="{{ asset('backend') }}/js/starlight.js"></script>
-
   </body>
 </html>
 

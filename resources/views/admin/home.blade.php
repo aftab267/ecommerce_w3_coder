@@ -1,4 +1,5 @@
 @extends('admin.admin-master')
+@section('dashboard') active @endsection
 
 @section('admin_content')
 <div class="sl-mainpanel">

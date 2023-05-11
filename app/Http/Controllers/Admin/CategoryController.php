@@ -27,6 +27,37 @@ class CategoryController extends Controller
             'created_at' => Carbon::now(),
         ]);
         return Redirect()->back()->with('success','Category Added Successfully');
+    }
+    //--------------------edit categories-------------------
+    public function Edit($id){
+        $category=Category::find($id);
+        return view('admin.category.edit',compact('category'));
+    }
+    //--------------------update categories-------------------
+    public function updateCat(Request $request){
+        $cat_id=$request->id;     
+        Category::find($cat_id)->update([
+            'category_name'=> $request->category_name,
+             'updated_at' =>Carbon::now(),
+        ]);
+        return Redirect()->route('admin.category')->with('catUpdated','Category updated Successfully');
+    }
+    //--------------------delete categories-------------------
+    public function Delete($id){
+        Category::find($id)->delete();
+        return Redirect()->back()->with('delete','Category Deleted Successfully');
+    }
+    //--------------------Inactive-------------------
+    public function Inactive($id){
+        Category::find($id)->update(['status'=>0]);
+        return Redirect()->back()->with('success','Category Inactive Successfully');
 
     }
+    //--------------------Active-------------------
+    public function Active($id){
+        Category::find($id)->update(['status'=>1]);
+        return Redirect()->back()->with('success','Category active Successfully');
+
+    }
+
 }
