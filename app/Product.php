@@ -21,4 +21,7 @@ class Product extends Model
     'image_three',
     'status',
    ];
+   public function cat_join(){
+      return $this->belongsTo(Category::class,'category_id');
+   }
 }
