@@ -54,3 +54,4 @@ Route::post('admin/products/store','Admin\ProductController@storeProduct')->name
 Route::get('admin/products/manage','Admin\ProductController@manageProduct')->name('manage-products');
 Route::get('admin/products/edit/{id}','Admin\ProductController@edit_pro')->name('edit-product');
 Route::post('admin/products/update/{id}','Admin\ProductController@update_products')->name('update-products');
+Route::post('admin/products/image-update/{id}','Admin\ProductController@updateImage')->name('update-image');

@@ -114,48 +114,61 @@
                   @enderror  
                                    
                 </div>
+                <button class="btn btn-info mg-r-5">Update Products Data</button>
+                
               </div><!-- col-4 -->
+             
+               
+            </form>
+        </div>
+            
+              
+                
+                <form action="{{ route('update-image',$product->id) }}" method="post" enctype="multipart/form-data">
+                  @csrf                  
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label">Main Thumbnail: <span class="tx-danger">*</span></label>
+                          <input type="hidden" name="img_one" value="{{ $product->image_one }}">
+                          <input type="hidden" name="img_two" value="{{ $product->image_two }}">
+                          <input type="hidden" name="img_three" value="{{ $product->image_three }}">
+                          
+                          <img width="80px;" src="{{ asset($product->image_one) }}" alt="">
+                          <input class="form-control" type="file" name="image_one" >
+                          @error('image_one')
+                          <strong class="text-danger">{{ $message }}</strong>
+                          @enderror 
+                        </div>
+                      </div><!-- col-4 -->
 
-          
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Main Thumbnail: <span class="tx-danger">*</span></label>
-                  <img width="80px;" src="{{ asset($product->image_one) }}" alt="">
-                  <input class="form-control" type="file" name="image_one" >
-                  @error('image_one')
-                  <strong class="text-danger">{{ $message }}</strong>
-                  @enderror 
-                </div>
-              </div><!-- col-4 -->
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label">Image Two: <span class="tx-danger">*</span></label>
+                          <img width="80px;" src="{{ asset($product->image_two) }}" alt="">
+                          <input class="form-control" type="file" name="image_two" >
+                          @error('image_two')
+                          <strong class="text-danger">{{ $message }}</strong>
+                          @enderror 
+                        </div>
+                      </div><!-- col-4 -->
 
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Image Two: <span class="tx-danger">*</span></label>
-                  <img width="80px;" src="{{ asset($product->image_two) }}" alt="">
-                  <input class="form-control" type="file" name="image_two" >
-                  @error('image_two')
-                  <strong class="text-danger">{{ $message }}</strong>
-                  @enderror 
-                </div>
-              </div><!-- col-4 -->
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label">Image Three: <span class="tx-danger">*</span></label>
+                          <img width="80px;" src="{{ asset($product->image_three) }}" alt="">
+                          <input class="form-control" type="file" name="image_three" >
+                          @error('image_three')
+                          <strong class="text-danger">{{ $message }}</strong>
+                          @enderror 
+                        </div>
+                      </div><!-- col-4 -->
 
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Image Three: <span class="tx-danger">*</span></label>
-                  <img width="80px;" src="{{ asset($product->image_three) }}" alt="">
-                  <input class="form-control" type="file" name="image_three" >
-                  @error('image_three')
-                  <strong class="text-danger">{{ $message }}</strong>
-                  @enderror 
-                </div>
-              </div><!-- col-4 -->
+                    </div><!-- row -->
 
-            </div><!-- row -->
-
-            <div class="form-layout-footer">
-              <button class="btn btn-info mg-r-5">Update Products</button>
-               </div><!-- form-layout-footer -->
-              </form>
+                    <div class="form-layout-footer">
+                      <button class="btn btn-info mg-r-5">Update Images</button>
+                      </div><!-- form-layout-footer -->
+                </form>
           </div><!-- form-layout -->
         </div><!-- card -->
 
