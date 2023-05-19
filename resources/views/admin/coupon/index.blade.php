@@ -1,11 +1,12 @@
 @extends('admin.admin-master')
-@section('brand') active @endsection
+@section('coupon') active @endsection
 
 @section('admin_content')
 <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
-      <a class="breadcrumb-item" href="index.html">Admin</a>      
-      <span class="breadcrumb-item active">Brand</span>
+      <a class="breadcrumb-item" href="index.html">Starlight</a>
+      <a class="breadcrumb-item" href="index.html">Tables</a>
+      <span class="breadcrumb-item active">Coupon Tables</span>
     </nav>
 
     <div class="sl-pagebody">
@@ -13,7 +14,7 @@
             <div class="col-md-8">          
           
                   <div class="card pd-20 pd-sm-40">
-                    <h6 class="card-body-title">Brand List</h6>
+                    <h6 class="card-body-title">Coupon</h6>
                     @if(session('catUpdated'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>{{session('catUpdated')}}</strong>
@@ -45,17 +46,17 @@
                         <thead>
                           <tr>
                             <th class="wd-15p">Sl</th>
-                            <th class="wd-15p">Brand Name</th>
+                            <th class="wd-15p">Coupon Name</th>
                             <th class="wd-20p">Status</th>                            
                             <th class="wd-25p">Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($brands as $key=>$row)
+                            @foreach($coupons as $key=>$row)
 
                           <tr>
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $row->brand_name }}</td>
+                            <td>{{ $row->coupon_name }}</td>
                             <td>
                                 @if($row->status==1)
                                 <span class="badge badge-success">Active</span>
@@ -64,15 +65,15 @@
                                 @endif
                             </td>                            
                             <td>
-                                <a href="{{ url('admin/brand/edit/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> </a>
-                                <a href="{{ url('admin/brand/delete/'.$row->id) }}" onclick="return confirm('Are You want ro delete? ')"
-                                 class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                 @if($row->status==1)
-                                <a href="{{ url('admin/brand/inactive/'.$row->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-down"></i></a>
-                                @else
-                                <a href="{{ url('admin/brand/active/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-up"></i></a>
-                                @endif
-                            </td>
+                              <a href="{{ url('admin/coupon/edit/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> </a>
+                              <a href="{{ url('admin/coupon/delete/'.$row->id) }}" onclick="return confirm('Are You want ro delete? ')"
+                               class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                               @if($row->status==1)
+                              <a href="{{ url('admin/coupon/inactive/'.$row->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-down"></i></a>
+                              @else
+                              <a href="{{ url('admin/coupon/active/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-up"></i></a>
+                              @endif
+                          </td>
                           </tr>
                           @endforeach
                 
@@ -86,7 +87,7 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Add Brand
+                    <div class="card-header">Add Coupon
                     </div>
 
                     <div class="card-body">
@@ -104,19 +105,19 @@
                           </div>
                           @endif
                           
-                        <form action="{{ route('store.brand') }}" method="POST">
+                        <form action="{{ route('store.coupon') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                            <label for="exampleInputEmail1">Add brand</label>
-                            <input type="text" name="brand_name" class="form-control @error('brand_name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Brand">
+                            <label for="exampleInputEmail1">Add Coupon</label>
+                            <input type="text" name="coupon_name" class="form-control @error('coupon_name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Coupon">
 
-                            @error('brand_name')
+                            @error('coupon_name')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
 
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Add Brand</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
                         </form>
 
 

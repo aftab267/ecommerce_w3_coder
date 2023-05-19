@@ -20,7 +20,15 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      @endif          
+                      @endif 
+                      @if(session('delete'))
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>{{session('delete')}}</strong>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        @endif         
           
                   <div class="card pd-20 pd-sm-40">
                     <h6 class="card-body-title">Product List</h6>            

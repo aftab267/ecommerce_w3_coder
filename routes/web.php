@@ -55,3 +55,12 @@ Route::get('admin/products/manage','Admin\ProductController@manageProduct')->nam
 Route::get('admin/products/edit/{id}','Admin\ProductController@edit_pro')->name('edit-product');
 Route::post('admin/products/update/{id}','Admin\ProductController@update_products')->name('update-products');
 Route::post('admin/products/image-update/{id}','Admin\ProductController@updateImage')->name('update-image');
+Route::get('admin/products/delete/{id}','Admin\ProductController@deleteImage')->name('delete-image');
+Route::get('admin/products/inactive/{id}','Admin\ProductController@Inactive');
+Route::get('admin/products/active/{id}','Admin\ProductController@active');
+//--------------------------Coupon------------------------------
+Route::get('admin/coupon','Admin\CouponController@index')->name('admin.coupon');
+Route::post('admin/coupon/store','Admin\CouponController@storeCoupon')->name('store.coupon');
+
+
+

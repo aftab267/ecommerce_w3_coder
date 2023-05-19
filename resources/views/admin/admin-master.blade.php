@@ -43,18 +43,12 @@
     <link href="{{ asset('backend') }}/lib/medium-editor/default.css" rel="stylesheet">
     <link href="{{ asset('backend') }}/lib/summernote/summernote-bs4.css" rel="stylesheet">
 
-
-
-
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('backend') }}/css/starlight.css">
   </head>
-
   <body>
-
    @guest
    @else
-
    
     <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
     <div class="sl-sideleft">
@@ -100,9 +94,15 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{ route('add-products') }}" class="nav-link @yield('add-products')">Add Products</a></li>
-          <li class="nav-item"><a href="{{ route('manage-products') }}" class="nav-link @yield('manage-products')">Manage Products</a></li>
-        
+          <li class="nav-item"><a href="{{ route('manage-products') }}" class="nav-link @yield('manage-products')">Manage Products</a></li>        
         </ul>
+
+        <a href="{{ route('admin.coupon') }}" class="sl-menu-link @yield('coupon')">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+            <span class="menu-item-label">Coupon</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
 
       </div><!-- sl-sideleft-menu -->
 

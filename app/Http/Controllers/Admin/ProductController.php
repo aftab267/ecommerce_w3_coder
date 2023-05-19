@@ -101,47 +101,7 @@ class ProductController extends Controller
             'short_description'=>'required',
             'long_description'=>'required',
             ]); 
-        // $image_one=$request->file('image_one');
-        // $name_gen=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-        // Image::make($image_one)->resize(270,270)->save('frontend/img/product/upload/'.$name_gen);
-        // $image_url1='frontend/img/product/upload/'.$name_gen;
-
-        // $image_two=$request->file('image_two');
-        // $name_gen=hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-        // Image::make($image_two)->resize(270,270)->save('frontend/img/product/upload/'.$name_gen);
-        // $image_url2='frontend/img/product/upload/'.$name_gen; 
-
-        // $image_three=$request->file('image_three');
-        // $name_gen=hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-        // Image::make($image_three)->resize(270,270)->save('frontend/img/product/upload/'.$name_gen);
-        // $image_url3='frontend/img/product/upload/'.$name_gen;
-            // $old_one=$request->img_one;
-            // $old_two=$request->img_two;
-            // $old_three=$request->img_three;
-            // if($request->has('image_one')){
-            //     unlink($old_one);
-            //     $image_one=$request->file('image_one');
-            //     $name_gen=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            //     Image::make($image_one)->resize(270,270)->save('frontend/img/product/upload/'.$name_gen);
-            //     $image_url1='frontend/img/product/upload/'.$name_gen;
-
-            // } 
-            // if($request->has('image_two')){
-            //     unlink($old_two);
-            //     $image_two=$request->file('image_two');
-            //     $name_gen=hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-            //     Image::make($image_two)->resize(270,270)->save('frontend/img/product/upload/'.$name_gen);
-            //     $image_url2='frontend/img/product/upload/'.$name_gen;
-
-            // } 
-            // if($request->has('image_three')){
-            //    unlink($old_three);
-            //     $image_three=$request->file('image_three');
-            //     $name_gen=hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-            //     Image::make($image_three)->resize(270,270)->save('frontend/img/product/upload/'.$name_gen);
-            //     $image_url3='frontend/img/product/upload/'.$name_gen;
-
-            // } 
+        
         
         Product::findOrFail($id)->update([
             'category_id'=>$request->category_id,
@@ -208,6 +168,31 @@ class ProductController extends Controller
 
             } 
             
+    }
+     //--------------Delete product----------------
+    public function deleteImage($id){
+        $image=Product::findOrFail($id);
+
+        $image_one=$image->image_one;
+        $image_two=$image->image_two;
+        $image_three=$image->image_three;
+        unlink($image_one);
+        unlink($image_two);
+        unlink($image_three);
+        Product::findOrFail($id)->delete();
+        return Redirect()->back()->with('delete','Product deleted Successfully');
+
+    }
+
+    //--------------Inactive product----------------
+    public function Inactive($id){
+        Product::findOrFail($id)->update(['status'=>0]);
+        return Redirect()->back()->with('success','product Inactive Successfully');
+    }
+    //--------------active product----------------
+    public function active($id){
+        Product::findOrFail($id)->update(['status'=>1]);
+        return Redirect()->back()->with('success','product Activated Successfully');
     }
 
 }
