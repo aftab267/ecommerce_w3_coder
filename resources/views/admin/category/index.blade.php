@@ -31,9 +31,9 @@
                         </button>
                       </div>
                       @endif
-                      @if(session('success'))
+                      @if(session('message'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{session('success')}}</strong>
+                    <strong>{{session('message')}}</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -52,28 +52,28 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($categories as $key=>$category)
+                            @foreach($categories as $key=>$row)
 
                           <tr>
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $category->category_name }}</td>
+                            <td>{{ $row->category_name }}</td>
                             <td>
-                                @if($category->status==1)
+                                @if($row->status==1)
                                 <span class="badge badge-success">Active</span>
                                 @else
                                 <span class="badge badge-danger">Inactive</span>
                                 @endif
                             </td>                            
                             <td>
-                                <a href="{{ url('admin/categories/edit/'.$category->id) }}" class="btn btn-success btn-sm">Edit</a>
-                                <a href="{{ url('admin/categories/delete/'.$category->id) }}" onclick="return confirm('Are You want ro delete? ')"
-                                 class="btn btn-danger btn-sm">Delete</a>
-                                 @if($category->status==1)
-                                <a href="{{ url('admin/categories/inactive/'.$category->id) }}" class="btn btn-danger btn-sm">Inactive</a>
-                                @else
-                                <a href="{{ url('admin/categories/active/'.$category->id) }}" class="btn btn-success btn-sm">Active</a>
-                                @endif
-                              </td>
+                              <a href="{{ url('admin/categories/edit/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> </a>
+                              <a href="{{ url('admin/categories/delete/'.$row->id) }}" onclick="return confirm('Are You want ro delete? ')"
+                               class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                               @if($row->status==1)
+                              <a href="{{ url('admin/categories/inactive/'.$row->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-down"></i></a>
+                              @else
+                              <a href="{{ url('admin/categories/active/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-up"></i></a>
+                              @endif
+                          </td>
                           </tr>
                           @endforeach
                 

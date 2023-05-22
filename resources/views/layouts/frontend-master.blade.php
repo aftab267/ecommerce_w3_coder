@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -8,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ogani | Template</title>
-
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
@@ -22,13 +20,11 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css" type="text/css">
 </head>
-
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
@@ -55,6 +51,7 @@
             <div class="header__top__right__auth">
                 <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
+           
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -121,12 +118,21 @@
                             <div class="header__top__right__auth">
                                 <a href="#"><i class="fa fa-user"></i> Login</a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
+            @if(session('cart'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{session('cart')}}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                    @endif
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
@@ -153,11 +159,17 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
+                        @php
+                            $total=App\Cart::all()->where('user_ip',request()->ip())->sum(function($t){
+                                return $t->price * $t->qty;
+                            });
+                            $quantity=App\Cart::where('user_ip',request()->ip())->sum('qty');
+                        @endphp
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>{{ $quantity }}</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">item: <span>${{ $total }}</span></div>
                     </div>
                 </div>
             </div>
@@ -175,20 +187,16 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>All Category</span>
                         </div>
+                        @php
+                            $categories=App\Category::where('status',1)->latest()->get();
+                        @endphp
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            @foreach($categories as $row)
+                            <li><a href="#">{{ $row->category_name }}</a></li>
+                            @endforeach
+                            
                         </ul>
                     </div>
                 </div>

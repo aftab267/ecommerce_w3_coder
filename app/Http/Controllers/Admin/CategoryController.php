@@ -50,13 +50,13 @@ class CategoryController extends Controller
     //--------------------Inactive-------------------
     public function Inactive($id){
         Category::find($id)->update(['status'=>0]);
-        return Redirect()->back()->with('success','Category Inactive Successfully');
+        return Redirect()->back()->with('message','Category Inactive Successfully');
 
     }
     //--------------------Active-------------------
     public function Active($id){
         Category::find($id)->update(['status'=>1]);
-        return Redirect()->back()->with('success','Category active Successfully');
+        return Redirect()->back()->with('message','Category active Successfully');
 
     }
 

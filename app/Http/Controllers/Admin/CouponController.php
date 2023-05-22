@@ -28,4 +28,34 @@ class CouponController extends Controller
         ]);
         return Redirect()->back()->with('success','Coupon Added Successfully');
     }
+    public function coupomEdit($id){
+        $coupon=Coupon::findOrFail($id);
+        return view('admin.coupon.edit',compact('coupon'));
+    }
+    //--------------------update Brand-------------------
+    public function updateCoupon(Request $request,$id){
+        
+        Coupon::find($id)->update([
+            'coupon_name'=> strtoupper($request->coupon_name),
+             'updated_at' =>Carbon::now(),
+        ]);
+        return Redirect()->route('admin.coupon')->with('catUpdated','Coupon updated Successfully');
+    }
+    //--------------------delete Coupon-------------------
+    public function Delete($id){
+        Coupon::find($id)->delete();
+        return Redirect()->back()->with('delete','Coupon Deleted Successfully');
+    }
+     //--------------------Inactive-------------------
+     public function Inactive($id){
+        Coupon::find($id)->update(['status'=> 0]);
+        return Redirect()->back()->with('success','Coupon Inactive Successfully');
+
+    }
+    //--------------------Active-------------------
+    public function Active($id){
+        Coupon::find($id)->update(['status'=>1]);
+        return Redirect()->back()->with('success','Coupon active Successfully');
+
+    }
 }

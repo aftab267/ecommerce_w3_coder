@@ -61,6 +61,14 @@ Route::get('admin/products/active/{id}','Admin\ProductController@active');
 //--------------------------Coupon------------------------------
 Route::get('admin/coupon','Admin\CouponController@index')->name('admin.coupon');
 Route::post('admin/coupon/store','Admin\CouponController@storeCoupon')->name('store.coupon');
+Route::get('admin/coupon/edit/{id}','Admin\CouponController@coupomEdit');
+Route::post('admin/coupon/update/{id}','Admin\CouponController@updateCoupon')->name('update.coupon');
+Route::get('admin/coupon/delete/{id}','Admin\CouponController@Delete');
+Route::get('admin/coupon/inactive/{id}','Admin\CouponController@Inactive');
+Route::get('admin/coupon/active/{id}','Admin\CouponController@Active');
+//===========================Frontend Routes============================
+//---------------Cart-------------------------------------------
+Route::post('add/to-cart/{product_id}','CartController@addToCart');
 
 
 

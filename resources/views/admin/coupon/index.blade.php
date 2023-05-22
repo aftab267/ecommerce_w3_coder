@@ -54,28 +54,28 @@
                         <tbody>
                             @foreach($coupons as $key=>$row)
 
-                          <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $row->coupon_name }}</td>
-                            <td>
-                                @if($row->status==1)
-                                <span class="badge badge-success">Active</span>
-                                @else
-                                <span class="badge badge-danger">Inactive</span>
-                                @endif
-                            </td>                            
-                            <td>
-                              <a href="{{ url('admin/coupon/edit/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> </a>
-                              <a href="{{ url('admin/coupon/delete/'.$row->id) }}" onclick="return confirm('Are You want ro delete? ')"
-                               class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                               @if($row->status==1)
-                              <a href="{{ url('admin/coupon/inactive/'.$row->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-down"></i></a>
-                              @else
-                              <a href="{{ url('admin/coupon/active/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-up"></i></a>
-                              @endif
-                          </td>
-                          </tr>
-                          @endforeach
+                              <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $row->coupon_name }}</td>
+                                <td>
+                                    @if($row->status==1)
+                                    <span class="badge badge-success">Active</span>
+                                    @else
+                                    <span class="badge badge-danger">Inactive</span>
+                                    @endif
+                                </td>                            
+                                <td>
+                                  <a href="{{ url('admin/coupon/edit/'$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> </a>
+                                  <a href="{{ url('admin/coupon/delete/'.$row->id) }}" onclick="return confirm('Are You want to delete? ')"
+                                  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                  @if($row->status==1)
+                                  <a href="{{ url('admin/coupon/inactive/'.$row->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-down"></i></a>
+                                  @else
+                                  <a href="{{ url('admin/coupon/active/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-up"></i></a>
+                                  @endif
+                              </td>
+                              </tr>
+                           @endforeach
                 
                         </tbody>
                       </table>                     
