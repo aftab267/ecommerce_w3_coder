@@ -69,6 +69,9 @@ Route::get('admin/coupon/active/{id}','Admin\CouponController@Active');
 //===========================Frontend Routes============================
 //---------------Cart-------------------------------------------
 Route::post('add/to-cart/{product_id}','CartController@addToCart');
+Route::get('cart','CartController@cartPage');
+Route::get('cart/destroy/{cart_id}','CartController@destroy');
+Route::post('cart/quantity/update/{cart_id}','CartController@quantityUpdate');
 
 
 
