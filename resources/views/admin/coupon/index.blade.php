@@ -47,6 +47,7 @@
                           <tr>
                             <th class="wd-15p">Sl</th>
                             <th class="wd-15p">Coupon Name</th>
+                            <th class="wd-15p">Coupon Discount</th>
                             <th class="wd-20p">Status</th>                            
                             <th class="wd-25p">Action</th>
                           </tr>
@@ -57,6 +58,7 @@
                               <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $row->coupon_name }}</td>
+                                <td>{{ $row->discount }}%</td>
                                 <td>
                                     @if($row->status==1)
                                     <span class="badge badge-success">Active</span>
@@ -65,7 +67,7 @@
                                     @endif
                                 </td>                            
                                 <td>
-                                  <a href="{{ url('admin/coupon/edit/'$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> </a>
+                                  <a href="{{ url('admin/coupon/edit/'.$row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> </a>
                                   <a href="{{ url('admin/coupon/delete/'.$row->id) }}" onclick="return confirm('Are You want to delete? ')"
                                   class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                   @if($row->status==1)
@@ -112,6 +114,15 @@
                             <input type="text" name="coupon_name" class="form-control @error('coupon_name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Coupon">
 
                             @error('coupon_name')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleInputEmail1">Add Discount</label>
+                            <input type="text" name="discount" class="form-control @error('discount') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Coupon Discount %">
+
+                            @error('discount')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
 

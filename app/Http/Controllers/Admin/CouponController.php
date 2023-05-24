@@ -24,6 +24,7 @@ class CouponController extends Controller
         ]);
         Coupon::insert([
             'coupon_name'=> strtoupper($request->coupon_name),
+            'discount'=> $request->discount,
             'created_at' => Carbon::now(),
         ]);
         return Redirect()->back()->with('success','Coupon Added Successfully');
@@ -37,6 +38,7 @@ class CouponController extends Controller
         
         Coupon::find($id)->update([
             'coupon_name'=> strtoupper($request->coupon_name),
+            'discount'=> $request->discount,
              'updated_at' =>Carbon::now(),
         ]);
         return Redirect()->route('admin.coupon')->with('catUpdated','Coupon updated Successfully');

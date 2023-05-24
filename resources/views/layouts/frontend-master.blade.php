@@ -116,7 +116,13 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                @auth
+                                <a href="{{ route('home') }}"><i class="fa fa-user"></i> My Account</a>
+                                @else
+                               
+                                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                                <a href="{{ route('register') }}"><i class="fa fa-user"></i> Register</a>
+                                @endauth
                             </div>
                             
                         </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Coupon;
 use Illuminate\Http\Request;
+use Session;
 
 class CartController extends Controller
 {
@@ -44,6 +46,18 @@ class CartController extends Controller
             'qty'=> $request->qty,
         ]);
         return Redirect()->back()->with('cart_update','Quantity Updated.');
-
+    }
+    //------------------coupon--------------------------------
+    public function applyCoupon(Request $request){
+       $check=Coupon::where('coupon_name',$request->coupon_name)->first();
+       if($check){
+        Session::put('coupon',[
+            'coupon_name'=>$check->coupon_name,
+            'coupon_discount'=>$check->discount,
+        ]);
+        return Redirect()->back()->with('cart_update','Coupon Applied.');
+       }else{
+        return Redirect()->back()->with('cart_delete','Invalid Coupon');
+       }
     }
 }

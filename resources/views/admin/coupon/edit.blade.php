@@ -32,10 +32,19 @@
                             <input type="hidden" value="{{ $coupon->id }}" name="id">
                             
                             <div class="form-group">
-                            <label for="exampleInputEmail1">Add Coupon</label>
+                            <label for="exampleInputEmail1">Update Coupon</label>
                             <input type="text" name="coupon_name" class="form-control @error('coupon_name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $coupon->coupon_name }}">
 
                             @error('coupon_name')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleInputEmail1">Update Discount</label>
+                            <input type="text" name="discount" class="form-control @error('discount') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $coupon->discount }}">
+
+                            @error('discount')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
 
