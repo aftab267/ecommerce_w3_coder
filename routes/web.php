@@ -74,5 +74,10 @@ Route::get('cart/destroy/{cart_id}','CartController@destroy');
 Route::post('cart/quantity/update/{cart_id}','CartController@quantityUpdate');
 Route::post('coupon/apply','CartController@applyCoupon');
 
+//-------------------Wishlist----------------------------
+Route::get('add/to-wishlist/{product_id}','WishlistController@addToWishlist');
+Route::get('wishlist','WishlistController@wishlistPage');
+Route::get('wishlist/destroy/{wishlist_id}','WishlistController@destroy');
+
 
 

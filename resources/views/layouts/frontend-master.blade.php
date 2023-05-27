@@ -170,9 +170,10 @@
                                 return $t->price * $t->qty;
                             });
                             $quantity=App\Cart::where('user_ip',request()->ip())->sum('qty');
+                            $wishQty=App\Wishlist::where('user_id',Auth::id())->get(); 
                         @endphp
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="{{ url('wishlist') }}"><i class="fa fa-heart"></i> <span>{{ count($wishQty) }}</span></a></li>
                             <li><a href="{{ url('cart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ $quantity }}</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>${{ $total }}</span></div>
@@ -204,6 +205,7 @@
                             <li>Phone: +65 11.188.888</li>
                             <li>Email: hello@colorlib.com</li>
                         </ul>
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
