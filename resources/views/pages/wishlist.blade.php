@@ -109,7 +109,7 @@
                                         ${{ $row->product->price }}
                                     </td>
                                     <td class="shoping__cart__price">
-                                        <form action="{{ url('add/to-cart/'.$row->id) }}" method="POST">
+                                        <form action="{{ url('add/to-cart/'.$row->product_id) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="price" value="{{ $row->product->price }}">
                                        <button type="submit" class="btn btn-danger btn-sm">Add To Cart</button>
