@@ -14,4 +14,10 @@ class FrontendController extends Controller
         $categories=Category::where('status',1)->latest()->get();
         return view('pages.index',compact('products','categories','lts_p'));
     }
+    //--------------------Product Details-----------------------
+    public function productDetails($product_id){
+        $product=Product::findOrFail($product_id);
+        return view('pages.product-details',compact('product'));
+
+    }
 }

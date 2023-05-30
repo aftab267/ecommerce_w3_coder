@@ -118,7 +118,7 @@
 
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#">{{ $product->product_name }}</a></h6>
+                            <h6><a href="{{ url('product/details/'.$product->id) }}">{{ $product->product_name }}</a></h6>
                             <h5>${{ $product->price }}</h5>
                         </div>
                     </div>
