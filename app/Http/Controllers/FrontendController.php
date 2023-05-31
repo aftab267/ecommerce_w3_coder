@@ -17,7 +17,9 @@ class FrontendController extends Controller
     //--------------------Product Details-----------------------
     public function productDetails($product_id){
         $product=Product::findOrFail($product_id);
-        return view('pages.product-details',compact('product'));
+        $category_id=$product->category_id;
+        $related_p=Product::where('category_id',$category_id)->where('id','!=',$product_id)->latest()->get();
+        return view('pages.product-details',compact('product','related_p'));
 
     }
 }
