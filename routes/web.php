@@ -73,6 +73,7 @@ Route::get('cart','CartController@cartPage');
 Route::get('cart/destroy/{cart_id}','CartController@destroy');
 Route::post('cart/quantity/update/{cart_id}','CartController@quantityUpdate');
 Route::post('coupon/apply','CartController@applyCoupon');
+Route::get('coupon/destroy','CartController@couponDestroy');
 
 //-------------------Wishlist----------------------------
 Route::get('add/to-wishlist/{product_id}','WishlistController@addToWishlist');
@@ -80,6 +81,8 @@ Route::get('wishlist','WishlistController@wishlistPage');
 Route::get('wishlist/destroy/{wishlist_id}','WishlistController@destroy');
 //-------------------Product details----------------------------
 Route::get('product/details/{product_id}','FrontendController@productDetails');
+// -------------------checkout controller-----------------------------
+Route::get('checkout','CheckoutController@index');
 
 
 
