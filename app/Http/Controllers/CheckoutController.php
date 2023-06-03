@@ -13,7 +13,7 @@ class CheckoutController extends Controller
         $subtotal=Cart::all()->where('user_ip',request()->ip())->sum(function($t){
             return $t->price * $t->qty;
         });       
-        return view('pages.checkout',compact('carts','subtotal')); 
+    return view('pages.checkout',compact('carts','subtotal')); 
     if(Auth::check()){
         return view('pages.checkout');
     }else{

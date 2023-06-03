@@ -83,6 +83,7 @@ Route::get('wishlist/destroy/{wishlist_id}','WishlistController@destroy');
 Route::get('product/details/{product_id}','FrontendController@productDetails');
 // -------------------checkout controller-----------------------------
 Route::get('checkout','CheckoutController@index');
+Route::post('place/order','OrderController@storeOrder')->name('place-order');
 
 
 
