@@ -80,7 +80,7 @@
                                     <div class="col-lg-6">
                                         <div class="checkout__input">
                                             <p>Fist Name<span>*</span></p>
-                                            <input type="text" name="shipping_first_name" value="{{ Auth::user()->name }}">
+                                            <input type="text" name="shipping_first_name" >
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -100,7 +100,7 @@
                                     <div class="col-lg-6">
                                         <div class="checkout__input">
                                             <p>Email<span>*</span></p>
-                                            <input type="text" name="shipping_email" value="{{ Auth::user()->email }}" >
+                                            <input type="text" name="shipping_email"  >
                                         </div>
                                     </div>
                                 </div>                          
@@ -135,8 +135,15 @@
                                    
                                     @if(Session::has('coupon'))
                                     <div class="checkout__order__total">Total <span>${{ $subtotal-session()->get('coupon')['discount_amount'] }}</span></div>
+                                    <input type="hidden" name="coupon_discount" value="{{ session()->get('coupon')['coupon_discount'] }}">
+                                    <input type="hidden" name="subtotal" value="{{ $subtotal }}">
+                                    <input type="hidden" name="total" value="{{ $subtotal-session()->get('coupon')['discount_amount'] }}">
+                                    
                                     @else
                                     <div class="checkout__order__subtotal">Subtotal <span>${{ $subtotal }}</span></div>
+                                    <input type="hidden" name="subtotal" value="{{ $subtotal }}">
+                                    <input type="hidden" name="total" value="{{ $subtotal }}">
+                                    
                                     @endif
                                      <h5>select Payment Method</h5>
                                     <div class="checkout__input__checkbox">
