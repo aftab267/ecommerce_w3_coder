@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Order;
 use App\Coupon;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Shipping;
+use App\OrderItem;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CouponController extends Controller
 {
@@ -59,5 +62,17 @@ class CouponController extends Controller
         Coupon::find($id)->update(['status'=>1]);
         return Redirect()->back()->with('success','Coupon active Successfully');
 
+    }
+    //---------------------Orders------------------------------------------
+    public function orderIndex(){
+        $orders=Order::latest()->get();
+        return view('admin.orders.index',compact('orders'));
+    }
+    //---------------Order View------------------------
+    public function viewOrder($order_id){
+        $order=Order::findOrFail($order_id);
+        $orderitems=OrderItem::where('order_id',$order_id)->get();
+        $shipping=Shipping::where('order_id',$order_id)->first();
+        return view('admin.orders.view',compact('order','orderitems','shipping'));
     }
 }

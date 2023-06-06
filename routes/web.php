@@ -66,6 +66,9 @@ Route::post('admin/coupon/update/{id}','Admin\CouponController@updateCoupon')->n
 Route::get('admin/coupon/delete/{id}','Admin\CouponController@Delete');
 Route::get('admin/coupon/inactive/{id}','Admin\CouponController@Inactive');
 Route::get('admin/coupon/active/{id}','Admin\CouponController@Active');
+//------------------------Orders------------------------------------------
+Route::get('admin/orders','Admin\CouponController@orderIndex')->name('admin.orders');
+Route::get('admin/orders/view/{id}','Admin\CouponController@viewOrder');
 //===========================Frontend Routes============================
 //---------------Cart-------------------------------------------
 Route::post('add/to-cart/{product_id}','CartController@addToCart');
