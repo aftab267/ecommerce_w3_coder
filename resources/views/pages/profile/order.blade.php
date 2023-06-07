@@ -70,23 +70,39 @@
 <section class="shoping-cart spad">
 <div class="container">
     <div class="row">
-        @include('pages.profile.inc.sidebar')
+     @include('pages.profile.inc.sidebar')
         <div class="col-sm-8">
           <div class="card">
             <div class="card-body">
               
-              <form>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Name</label>
-                  <input type="email" class="form-control" value="{{ Auth::user()->name }}" id="exampleInputEmail1" aria-describedby="emailHelp">                 
-                </div>            
-                <div class="mb-3">
-                  <label for="exmemail" class="form-label">Email</label>
-                  <input type="email" class="form-control" value="{{ Auth::user()->email }}" id="exmemail" aria-describedby="emailHelp">                 
-                </div>            
-            
-                <button type="submit" class="btn btn-primary">Update</button>
-              </form>
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                       
+                        <th scope="col">Invoice No</th>
+                        <th scope="col">Payment Type</th>
+                        <th scope="col">Sub Total</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($orders as $item)
+                      <tr>
+                      
+                        <td>{{ $item->invoice_no }}</td>
+                        <td>{{ $item->payment_type }}</td>
+                        <td>${{ $item->subtotal }}</td>
+                        <td>${{ $item->total }}</td>
+                        <td>
+                            <a href="{{ url('user/order-view/'.$item->id) }}" class="btn btn-danger btn-sm">View</a>
+                        </td>
+                       
+                      </tr> 
+                      @endforeach                  
+                   
+                    </tbody>
+                  </table>
              
             </div>
           </div>

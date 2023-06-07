@@ -89,6 +89,10 @@ Route::get('checkout','CheckoutController@index');
 Route::post('place/order','OrderController@storeOrder')->name('place-order');
 Route::get('order/success','OrderController@orderSuccess');
 
+//-------user Routes---------------------------
+Route::get('user/order','UserController@order')->name('user.order');
+Route::get('user/order-view/{id}','UserController@orderView');
+
 
 
 
