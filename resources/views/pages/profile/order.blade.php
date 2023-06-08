@@ -73,12 +73,11 @@
      @include('pages.profile.inc.sidebar')
         <div class="col-sm-8">
           <div class="card">
-            <div class="card-body">
-              
+            <div class="card-body">              
                 <table class="table table-bordered">
                     <thead>
-                      <tr>
-                       
+                      <tr>                       
+                        <th scope="col">#</th>
                         <th scope="col">Invoice No</th>
                         <th scope="col">Payment Type</th>
                         <th scope="col">Sub Total</th>
@@ -87,17 +86,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach($orders as $item)
-                      <tr>
-                      
+                        @foreach($orders as $key=>$item)
+                      <tr>                      
+                        <td>{{ $key+1 }}</td>
                         <td>{{ $item->invoice_no }}</td>
                         <td>{{ $item->payment_type }}</td>
                         <td>${{ $item->subtotal }}</td>
                         <td>${{ $item->total }}</td>
                         <td>
                             <a href="{{ url('user/order-view/'.$item->id) }}" class="btn btn-danger btn-sm">View</a>
-                        </td>
-                       
+                        </td>                       
                       </tr> 
                       @endforeach                  
                    

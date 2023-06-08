@@ -82,6 +82,10 @@ Route::get('coupon/destroy','CartController@couponDestroy');
 Route::get('add/to-wishlist/{product_id}','WishlistController@addToWishlist');
 Route::get('wishlist','WishlistController@wishlistPage');
 Route::get('wishlist/destroy/{wishlist_id}','WishlistController@destroy');
+//---------------------------Shop page--------------------------------
+Route::get('shop','FrontendController@shopPage')->name('shop.page');
+//------------category wise product show------------------------------
+Route::get('category/product-show/{id}','FrontendController@catWiseproduct');
 //-------------------Product details----------------------------
 Route::get('product/details/{product_id}','FrontendController@productDetails');
 // -------------------checkout controller-----------------------------
